@@ -30,10 +30,10 @@ function Home() {
     className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] bg-sky-500 opacity-20 blur-[120px] rounded-full"
   />
 
-   <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(100,100,100,0.05)_1px,transparent_1px),linear-gradient(to_bottom,rgba(200,200,200,0.05)_1px,transparent_1px)] bg-[size:40px_40px]" />
+   <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.1)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.1)_1px,transparent_1px)] bg-[size:40px_40px]" />
 
   
-  <div className="absolute inset-0 opacity-10 bg-[url('https://grainy-gradients.vercel.app/noise.svg')]" />
+ 
 
 </div>
    
@@ -46,7 +46,7 @@ function Home() {
             <motion.h1
               initial={{ opacity: 0, y: 50 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
+              transition={{ duration: 1,ease:"easeOut" }}
               className="text-5xl md:text-7xl font-bold leading-tight"
             >
               Learn with{" "}
@@ -109,7 +109,7 @@ function Home() {
             ].map((item, i) => (
               <motion.div
                 key={i}
-                whileHover={{ scale: 1.05 }}
+                whileHover={{ scale: 1.05,y:-5 }}
                 className="p-6 rounded-2xl bg-white/10 backdrop-blur-xl border border-white/20 shadow-2xl transition"
               >
                 <h3 className="text-xl font-semibold">{item.title}</h3>

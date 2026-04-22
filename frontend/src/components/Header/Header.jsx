@@ -5,18 +5,19 @@ import Container from "../container/Container";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 
+
 function Header() {
   const authStatus = useSelector((state) => state.auth.status);
 
   return (
-    <header className="sticky top-0 z-50 backdrop-blur-xl bg-black border-b border-white/20">
+    <header className="sticky top-0 z-50 backdrop-blur-md bg-black border-b border-white/20">
       <Container>
         <div className="flex items-center justify-between py-4">
-
           {/*  LOGO */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 1.5, ease: "easeOut" }}
             className="text-xl font-bold tracking-wide"
           >
             <Link to="/">
@@ -26,68 +27,59 @@ function Header() {
             </Link>
           </motion.div>
 
-          {/*  NAV LINKS */}
-          <nav className="hidden md:flex items-center gap-8 text-sm text-gray-300">
-
-            <Link
-              to="/"
-              className="hover:text-white transition"
-            >
-              Home
-            </Link>
-
-            {authStatus && (
-              <>
-                <Link
-                  to="/videos"
-                  className="hover:text-white transition"
-                >
-                  Videos
-                </Link>
-
-                <Link
-                  to="/channel"
-                  className="hover:text-white transition"
-                >
-                  Channel
-                </Link>
-              </>
-            )}
-
-          </nav>
-
+          
           {/*  BUTTONS */}
-          <motion.div
-            initial={{ opacity: 0, x: 30 }}
-            animate={{ opacity: 1, x: 0 }}
-            className="flex items-center gap-4"
-          >
-            {!authStatus ? (
+              <motion.div
+                initial={{ opacity: 0, x: 300 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 1.5, ease: "easeOut" }}
+                className="flex items-center gap-4"
+              >
+              {!authStatus ? (
               <>
+                <motion.div
+                 whileHover={{ scale: 1.05, y: -2 }}
+                 whileTap={{ scale: 0.95 }}
+                 transition={{ type: "spring", stiffness: 300 }}
+                 >
                 <Button
-                  variant="ghost"
-                  className="text-white hover:bg-white/10"
+                 
+                  className="text-black rounded-xl bg-green-800 hover:bg-indigo-400 border-black transition "
                   asChild
                 >
                   <Link to="/login">Login</Link>
                 </Button>
+                </motion.div>
+                 <motion.div
+                 whileHover={{ scale: 1.08, y: -2 }}
+                 whileTap={{ scale: 0.95 }}
+                 transition={{ type: "spring", stiffness: 300 }}
+                 >
 
                 <Button
-                  className="rounded-xl bg-white text-black hover:bg-gray-200 transition"
+                  className="rounded-xl bg-white text-black hover:bg-indigo-400 border-black transition"
                   asChild
                 >
                   <Link to="/signup">Sign Up</Link>
                 </Button>
-              </>
-            ) : (
+                </motion.div>
+                </>
+                ) : (
+                  <motion.div
+                whileHover={{ scale: 1.05, y: -2 }}
+                whileTap={{ scale: 0.95 }}
+                transition={{ type: "spring", stiffness: 300 }}
+                 >
+
               <Button
                 variant="outline"
                 className="border-white/30 text-white hover:bg-white/10"
               >
                 Logout
               </Button>
+               </motion.div>
             )}
-          </motion.div>
+         </motion.div>
 
         </div>
       </Container>
