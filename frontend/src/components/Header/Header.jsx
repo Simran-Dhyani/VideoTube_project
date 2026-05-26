@@ -44,7 +44,7 @@ function Header() {
                  >
                 <Button
                  
-                  className="text-black rounded-xl bg-green-800 hover:bg-indigo-400 border-black transition "
+                  className="text-black rounded-xl bg-green-800 hover:bg-indigo-400 border-black transition  "
                   asChild
                 >
                   <Link to="/login">Login</Link>
@@ -57,7 +57,7 @@ function Header() {
                  >
 
                 <Button
-                  className="rounded-xl bg-white text-black hover:bg-indigo-400 border-black transition"
+                  className="rounded-xl bg-white text-black hover:bg-indigo-400  border-black transition"
                   asChild
                 >
                   <Link to="/signup">Sign Up</Link>
