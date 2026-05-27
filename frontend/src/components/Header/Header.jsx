@@ -4,6 +4,7 @@ import { useSelector } from "react-redux";
 import Container from "../container/Container";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
+import LogOutBtn from "./LogOut";
 
 
 function Header() {
@@ -71,12 +72,7 @@ function Header() {
                 transition={{ type: "spring", stiffness: 300 }}
                  >
 
-              <Button
-                variant="outline"
-                className="border-white/30 text-white hover:bg-white/10"
-              >
-                Logout
-              </Button>
+              <LogOutBtn/>
                </motion.div>
             )}
          </motion.div>

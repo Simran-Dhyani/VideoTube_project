@@ -38,7 +38,7 @@ function Login() {
 
       if (response) {
 
-        dispatch(login(response.data.user));
+        dispatch(login(response.user));
 
         navigate("/dashboard");
       }
