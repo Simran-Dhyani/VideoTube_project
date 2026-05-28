@@ -3,10 +3,39 @@ import {
   Sidebar,
   Navbar,
   VideoCard,
-  VideoGrid
+  VideoSection
 } from "../components/index.js";
 
 function Dashboard() {
+  const videos = [
+
+  {
+    id: 1,
+
+    thumbnail:
+      "https://i.ytimg.com/vi/dGcsHMXbSOA/maxresdefault.jpg",
+
+    title: "Learn React in One Video",
+
+    channel: "Codevolution",
+
+    duration: "24:10",
+  },
+
+  {
+    id: 2,
+
+    thumbnail:
+      "https://i.ytimg.com/vi/7CqJlxBYj-M/maxresdefault.jpg",
+
+    title: "Node.js Crash Course",
+
+    channel: "Traversy Media",
+
+    duration: "18:40",
+  },
+
+];
 
   return (
 
@@ -21,27 +50,12 @@ function Dashboard() {
         {/* Hero */}
 
         <HeroSection />
+        
+        <VideoSection
+        title="Recommended videos"
+        videos={videos}
 
-        {/* Temporary Video Test */}
-
-        <div className="mt-10 max-w-sm">
-
-          <VideoCard
-            video={{
-              thumbnail:
-                "https://i.ytimg.com/vi/dGcsHMXbSOA/maxresdefault.jpg",
-
-              title: "Learn React in One Video",
-
-              channel: "Codevolution",
-
-              duration: "24:10",
-            }}
-          />
-
-        </div>
-
-        <VideoGrid />
+        />
 
       </div>
 

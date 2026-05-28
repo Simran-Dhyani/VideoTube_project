@@ -7,7 +7,7 @@ import HeroSection from "./Dashboard/HeroSection";
 import Navbar from "./Dashboard/Navbar";
 import Sidebar from "./Dashboard/Sidebar";
 import VideoCard from "./Dashboard/VideoCard";
-import VideoGrid from "./Dashboard/VideoGrid";
+import VideoSection from "./Dashboard/VideoSection";
 
 export{
     Header,
@@ -19,5 +19,5 @@ export{
     Navbar,
     Sidebar,
     VideoCard,
-    VideoGrid
+    VideoSection
 }
