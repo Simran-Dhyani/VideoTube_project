@@ -1,6 +1,6 @@
 import { Search, Bell } from "lucide-react";
 
-function Navbar() {
+function Navbar({searchQuery,setSearchQuery}) {
 
   return (
 
@@ -12,12 +12,14 @@ function Navbar() {
 
         <Search
           size={18}
-          className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400"
+          className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 "
         />
 
         <input
           type="text"
           placeholder="Search videos..."
+          value={searchQuery}
+          onChange={(e)=>setSearchQuery(e.target.value)}
           className="
             w-full
             pl-12
@@ -33,6 +35,7 @@ function Navbar() {
             focus:ring-2
             focus:ring-purple-300
             transition
+             hover:shadow-purple-500
           "
         />
 
