@@ -1,41 +1,25 @@
+import { useState,useEffect } from "react";
 import {
   HeroSection,
   Sidebar,
   Navbar,
-  VideoCard,
   VideoSection
 } from "../components/index.js";
+import { fetchVideos } from "@/services/youtubeService.js";
 
 function Dashboard() {
-  const videos = [
+  const [videos,setVideos]=useState([])
+  const getVideos=async()=>{
+    const data=await fetchVideos()
+    setVideos(data)
+  }
 
-  {
-    id: 1,
+  useEffect(()=>{
+    getVideos()
 
-    thumbnail:
-      "https://i.ytimg.com/vi/dGcsHMXbSOA/maxresdefault.jpg",
+  },[])
 
-    title: "Learn React in One Video",
-
-    channel: "Codevolution",
-
-    duration: "24:10",
-  },
-
-  {
-    id: 2,
-
-    thumbnail:
-      "https://i.ytimg.com/vi/7CqJlxBYj-M/maxresdefault.jpg",
-
-    title: "Node.js Crash Course",
-
-    channel: "Traversy Media",
-
-    duration: "18:40",
-  },
-
-];
+  
 
   return (
 

@@ -1,8 +1,13 @@
 import { motion } from "framer-motion";
 
 function VideoCard({ video }) {
-
+const videoUrl = `https://www.youtube.com/watch?v=${video.id.videoId}`
   return (
+    <a
+   href={videoUrl}
+   target="_blank"
+   rel="noopener noreferrer"
+     >
 
     <motion.div
 
@@ -13,6 +18,7 @@ function VideoCard({ video }) {
       className="
         group
         cursor-pointer
+       
       "
     >
 
@@ -28,12 +34,13 @@ function VideoCard({ video }) {
           border
           border-white/30
           shadow-lg
+           hover:shadow-purple-500
         "
       >
 
         <img
-          src={video.thumbnail}
-          alt={video.title}
+          src={video.snippet.thumbnails.high.url}
+          alt={video.snippet.title}
           className="
             w-full
             h-52
@@ -60,7 +67,7 @@ function VideoCard({ video }) {
           "
         >
 
-          {video.duration}
+          {"10.00"}
 
         </div>
 
@@ -79,19 +86,20 @@ function VideoCard({ video }) {
           "
         >
 
-          {video.title}
+          {video.snippet.title}
 
         </h3>
 
         <p className="mt-2 text-sm text-gray-500">
 
-          {video.channel}
+          {video.snippet.channelTitle}
 
         </p>
 
       </div>
 
     </motion.div>
+    </a>
 
   );
 }
