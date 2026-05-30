@@ -1,12 +1,11 @@
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 
 function VideoCard({ video }) {
-const videoUrl = `https://www.youtube.com/watch?v=${video.id.videoId}`
+
   return (
-    <a
-   href={videoUrl}
-   target="_blank"
-   rel="noopener noreferrer"
+    <Link 
+   to={`/watch/${video.id.videoId}`}
      >
 
     <motion.div
@@ -99,7 +98,7 @@ const videoUrl = `https://www.youtube.com/watch?v=${video.id.videoId}`
       </div>
 
     </motion.div>
-    </a>
+    </Link>
 
   );
 }

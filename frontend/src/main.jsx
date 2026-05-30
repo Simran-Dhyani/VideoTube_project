@@ -9,6 +9,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Home from "./pages/Home"; 
 import Login from "./pages/login";
 import SignUp from "./pages/signup";
+import Watch from "./pages/Watch";
 
 import Dashboard from "./pages/Dashboard";
 
@@ -34,6 +35,10 @@ const router = createBrowserRouter([
       path:"/dashboard",
       element:<Dashboard/>,
       },
+      {
+        path:"/watch/:id",
+        element:<Watch/>
+      }
 
 
     ],
