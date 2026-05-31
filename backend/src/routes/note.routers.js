@@ -3,5 +3,5 @@ import { Router } from "express";
 import createNote from "../controllers/note.controller.js";
 
 const router=Router()
-router.route("/").post(createNote)
+router.route("/").post(verifyJWT,createNote)
 export default router

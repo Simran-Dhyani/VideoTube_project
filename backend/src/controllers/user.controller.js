@@ -98,6 +98,7 @@ const loginUser=asyncHandler(async(req,res)=>{
 //if found check password
 //access and refresh token sent to user
 //send cookie
+
 const {email,username,password}=req.body
 if(!username && !email ){
     throw new ApiError(400,'username or email required')
@@ -164,15 +165,15 @@ const refreshAccessToken=asyncHandler(async(req,res)=>{
          httpOnly:true,
          secure:true
      }
-    const {accessToken,newRefreshToken} = await generateAccessAndRefreshTokens(user._id)
+    const {accessToken,refreshToken} = await generateAccessAndRefreshTokens(user._id)
      return res
      .status(200)
      .cookie("accessToken",accessToken,options)
-     .cookie("refreshToken",newRefreshToken,options)
+     .cookie("refreshToken",refreshToken,options)
      .json(
          new ApiResponse(
              200,
-             {accessToken,refreshToken:newRefreshToken},
+             {accessToken,refreshToken},
              "Access token refreshed"
          )
      )
