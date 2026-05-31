@@ -1,19 +1,33 @@
 
-import React from "react";
+import React, { useState } from "react";
 import { useParams } from "react-router-dom";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import { saveNotes } from "@/services/noteService";
 
 function Watch() {
-  const { id } = useParams();
+        const { id } = useParams();
+        const [note,setNote]=useState("")
+        const handleSave = async () => {
+        try {
+        await saveNotes(id, note);
 
-  return (
-    <div className="max-w-7xl mx-auto p-6">
-      <div className="flex flex-col lg:flex-row gap-6">
+        alert("Note saved!");
 
-        {/* Video Section */}
-        <div className="lg:w-2/3">
-          <div className="aspect-video">
+        setNote("");
+        } catch (error) {
+        console.log(error);
+
+        alert("Failed to save note");
+        }
+        };
+    return (
+           <div className="max-w-7xl mx-auto p-6">
+           <div className="flex flex-col lg:flex-row gap-6">
+
+          {/* Video Section */}
+           <div className="lg:w-2/3">
+           <div className="aspect-video">
             <iframe
               className="w-full h-full rounded-2xl shadow-lg"
               src={`https://www.youtube.com/embed/${id}`}
@@ -34,16 +48,27 @@ function Watch() {
             </p>
           </div>
         </div>
+          <div className="lg:w-1/3">
+          <form
+          onSubmit={(e) => {
+          e.preventDefault();
+          handleSave();
+          }}>
+
 
         {/* Notes Section */}
-        <div className="lg:w-1/3">
+      
           <Card className="p-5 lg:sticky lg:top-6">
             <h2 className="text-xl font-semibold mb-4">
               My Notes
             </h2>
+            
 
             <textarea
               placeholder="Write your notes here..."
+              value={note}
+              onChange={(e)=>setNote(e.target.value)}
+            
               className="
                 w-full
                 h-72
@@ -57,15 +82,19 @@ function Watch() {
               "
             />
 
-            <Button className="w-full mt-4">
+            <Button 
+            type="submit"
+            className="w-full mt-4">
               Save Note
             </Button>
           </Card>
+        
+        </form>
         </div>
 
       </div>
     </div>
-  );
-}
+     );
+    }
 
 export default Watch;
