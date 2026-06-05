@@ -1,13 +1,31 @@
 
 import React, { useState } from "react";
+import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { saveNotes } from "@/services/noteService";
+import { getNotes } from "@/services/noteService";
+
 
 function Watch() {
         const { id } = useParams();
         const [note,setNote]=useState("")
+        const [notes,setNotes]=useState([])
+        //for getting notes
+        useEffect(() => {
+          fetchNotes();
+          }, [id]);
+         const fetchNotes = async () => {
+         try {
+         const data = await getNotes(id);
+         setNotes(data);
+          } catch (error) {
+        console.log(error);
+        }
+        };
+        //for saving notes
+
         const handleSave = async () => {
         try {
         await saveNotes(id, note);
@@ -15,6 +33,7 @@ function Watch() {
         alert("Note saved!");
 
         setNote("");
+        fetchNotes();
         } catch (error) {
         console.log(error);
 
@@ -81,6 +100,16 @@ function Watch() {
                 focus:ring-purple-400
               "
             />
+                <div className="mt-4">
+                {notes.map((note) => (
+                <div
+                key={note._id}
+                 className="p-2 border rounded mb-2"
+                  >
+                 {note.content}
+                 </div>
+                 ))}
+                 </div>
 
             <Button 
             type="submit"
