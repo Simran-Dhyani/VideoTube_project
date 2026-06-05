@@ -15,4 +15,5 @@ import userRouter from "./routes/user.routers.js"
 app.use("/api/v1/users",userRouter)
 import noteRouter from "./routes/note.routers.js"
 app.use("/api/v1/notes",noteRouter)
+
 export{app}

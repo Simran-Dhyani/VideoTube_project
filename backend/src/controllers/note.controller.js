@@ -2,6 +2,8 @@ import { asyncHandler } from "../utils/asyncHandler.js"
 import {ApiError} from "../utils/ApiError.js"
 import { ApiResponse } from "../utils/ApiResponse.js"
 import { Note } from "../models/note.model.js"
+
+// save notes 
 const createNote=asyncHandler(async(req,res)=>{
 //read data from req.body
 //validate data
@@ -29,4 +31,17 @@ return res.status(201).json(
 )
 })
 
-export default createNote
+
+
+// get notes or display notes
+const getNotes=asyncHandler(async(req,res)=>{
+    const {videoId}=req.params;
+    const notes=await Note.find({
+        user:req.user?._id,
+        videoId
+    })
+    return res.status(200).json(
+     new ApiResponse(200, notes, "Notes fetched successfully")
+    );
+})
+export { createNote, getNotes }
