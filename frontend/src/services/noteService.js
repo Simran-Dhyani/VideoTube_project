@@ -1,7 +1,8 @@
 import axios from "axios";
+const API=import.meta.env.VITE_API_URL;
 export const saveNotes=async(videoId,content)=>{
     const response=await axios.post(
-         "http://localhost:8000/api/v1/notes",
+         `${API}/api/v1/notes`,
          {
             videoId,
             content,
@@ -15,7 +16,7 @@ export const saveNotes=async(videoId,content)=>{
 };
 export const getNotes = async (videoId) => {
     const response = await axios.get(
-        `http://localhost:8000/api/v1/notes/${videoId}`,
+        `${API}/api/v1/notes/${videoId}`,
         {
             withCredentials: true,
         }
@@ -25,7 +26,7 @@ export const getNotes = async (videoId) => {
 };
 export const deleteNote = async (noteId) => {
     const response = await axios.delete(
-        `http://localhost:8000/api/v1/notes/${noteId}`,
+        `${API}/api/v1/notes/${noteId}`,
         {
             withCredentials: true,
         }
@@ -35,7 +36,7 @@ export const deleteNote = async (noteId) => {
 };
 export const updateNote = async (noteId, content) => {
   const response = await axios.patch(
-    `http://localhost:8000/api/v1/notes/${noteId}`,
+    `${API}/api/v1/notes/${noteId}`,
     { content },
     {
       withCredentials: true,

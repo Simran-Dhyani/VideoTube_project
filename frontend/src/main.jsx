@@ -12,6 +12,7 @@ import SignUp from "./pages/signup";
 import Watch from "./pages/Watch";
 
 import Dashboard from "./pages/Dashboard";
+import MyNotes from "./pages/MyNotes";
 
 const router = createBrowserRouter([
   {
@@ -38,8 +39,11 @@ const router = createBrowserRouter([
       {
         path:"/watch/:id",
         element:<Watch/>
+      },
+      {
+      path:"/my-notes",
+      element:<MyNotes/>
       }
-
 
     ],
   },

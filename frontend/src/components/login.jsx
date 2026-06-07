@@ -1,3 +1,4 @@
+
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
@@ -13,7 +14,6 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 
 function Login() {
-
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
@@ -25,26 +25,20 @@ function Login() {
     formState: { errors },
   } = useForm();
 
-  const Login = async (data) => {
-
+  const LoginUser = async (data) => {
     setError("");
 
     try {
-
       const response = await authService.login({
         email: data.email,
         password: data.password,
       });
 
       if (response) {
-
         dispatch(login(response.user));
-
         navigate("/dashboard");
       }
-
     } catch (e) {
-
       setError(
         e.response?.data?.message || "Login failed"
       );
@@ -52,67 +46,92 @@ function Login() {
   };
 
   return (
-    <div className="relative min-h-screen overflow-hidden bg-[#f8f7ff] flex items-center justify-center">
+    <div className="relative min-h-screen bg-black text-white overflow-hidden flex items-center justify-center">
 
-      <motion.div
-        animate={{
-          x: [0, 40, -40, 0],
-          y: [0, -40, 40, 0],
-        }}
-        transition={{
-          duration: 18,
-          repeat: Infinity,
-        }}
-        className="absolute top-[-120px] left-[-120px] w-[420px] h-[420px] bg-pink-200/40 blur-[120px] rounded-full"
-      />
+      {/* Animated Background */}
 
-      <motion.div
-        animate={{
-          x: [0, -50, 50, 0],
-          y: [0, 50, -50, 0],
-        }}
-        transition={{
-          duration: 22,
-          repeat: Infinity,
-        }}
-        className="absolute bottom-[-120px] right-[-120px] w-[450px] h-[450px] bg-blue-200/40 blur-[120px] rounded-full"
-      />
+      <div className="absolute inset-0 overflow-hidden">
 
-      <motion.div
-        animate={{
-          y: [0, -30, 0],
-        }}
-        transition={{
-          duration: 12,
-          repeat: Infinity,
-        }}
-        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[350px] h-[350px] bg-purple-200/30 blur-[100px] rounded-full"
-      />
-
-      
-
-      <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(150,150,150,0.05)_1px,transparent_1px),linear-gradient(to_bottom,rgba(150,150,150,0.05)_1px,transparent_1px)] bg-[size:40px_40px]" />
-
-     
-      <Container>
         <motion.div
-          initial={{ opacity: 0, y: 60 }}
+          animate={{
+            x: [0, 50, -50, 0],
+            y: [0, -50, 50, 0],
+          }}
+          transition={{
+            duration: 20,
+            repeat: Infinity,
+          }}
+          className="absolute top-[-150px] left-[-150px] w-[500px] h-[500px] bg-purple-500/30 blur-[140px] rounded-full"
+        />
+
+        <motion.div
+          animate={{
+            x: [0, -60, 60, 0],
+            y: [0, 60, -60, 0],
+          }}
+          transition={{
+            duration: 25,
+            repeat: Infinity,
+          }}
+          className="absolute bottom-[-150px] right-[-150px] w-[500px] h-[500px] bg-pink-600/30 blur-[140px] rounded-full"
+        />
+
+        <motion.div
+          animate={{
+            y: [0, -30, 0],
+          }}
+          transition={{
+            duration: 10,
+            repeat: Infinity,
+          }}
+          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] bg-sky-500/20 blur-[120px] rounded-full"
+        />
+
+        <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.08)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.08)_1px,transparent_1px)] bg-[size:40px_40px]" />
+
+      </div>
+
+      <Container>
+
+        <motion.div
+          initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          className="relative z-10 mx-auto w-full max-w-md"
+          className="relative z-10 w-full mx-auto max-w-md"
         >
 
-          <div className="backdrop-blur-2xl bg-white/60 border border-white/40 shadow-2xl rounded-3xl p-10">
+          <div
+            className="
+              backdrop-blur-3xl
+              bg-white/10
+              border
+              border-white/20
+              rounded-3xl
+              p-10
+              shadow-[0_0_60px_rgba(168,85,247,0.15)]
+            "
+          >
 
+            
 
+            <div className="text-center mb-8">
 
-            <div className="text-center">
-
-              <h1 className="text-4xl font-bold text-gray-800">
-                Welcome Back
+              <h1
+                className="
+                  text-5xl
+                  font-bold
+                  bg-gradient-to-r
+                  from-purple-400
+                  via-pink-400
+                  to-blue-400
+                  bg-clip-text
+                  text-transparent
+                "
+              >
+                Welcome Back!!
               </h1>
 
-              <p className="mt-3 text-gray-500">
+              <p className="text-gray-400 mt-4">
                 Continue your smart learning journey
               </p>
 
@@ -120,33 +139,50 @@ function Login() {
 
             {/* Error */}
 
-            {
-              error && (
-                <p className="text-red-500 text-center mt-6">
-                  {error}
-                </p>
-              )
-            }
+            {error && (
+              <div
+                className="
+                  bg-red-500/10
+                  border
+                  border-red-500/20
+                  text-red-400
+                  rounded-xl
+                  p-3
+                  text-center
+                  mb-5
+                "
+              >
+                {error}
+              </div>
+            )}
 
-            
+            {/* Form */}
 
             <form
-              onSubmit={handleSubmit(Login)}
-              className="mt-8 space-y-6"
+              onSubmit={handleSubmit(LoginUser)}
+              className="space-y-5"
             >
-
-             
 
               <div>
 
-                <label className="text-sm font-medium text-gray-700">
+                <label className="text-gray-300 text-sm">
                   Email
                 </label>
 
                 <Input
                   type="email"
                   placeholder="Enter your email"
-                  className="mt-2 h-12 rounded-xl border-white/40 bg-white/70"
+                  className="
+                    mt-2
+                    h-12
+                    bg-white/5
+                    border-white/10
+                    text-white
+                    placeholder:text-gray-500
+                    rounded-xl
+                    focus:ring-2
+                    focus:ring-purple-500
+                  "
                   {...register("email", {
                     required: "Email is required",
                     validate: {
@@ -158,61 +194,81 @@ function Login() {
                   })}
                 />
 
-                {
-                  errors.email && (
-                    <p className="text-red-500 text-sm mt-2">
-                      {errors.email.message}
-                    </p>
-                  )
-                }
+                {errors.email && (
+                  <p className="text-red-400 text-sm mt-2">
+                    {errors.email.message}
+                  </p>
+                )}
 
               </div>
 
-
               <div>
 
-                <label className="text-sm font-medium text-gray-700">
+                <label className="text-gray-300 text-sm">
                   Password
                 </label>
 
                 <Input
                   type="password"
                   placeholder="Enter your password"
-                  className="mt-2 h-12 rounded-xl border-white/40 bg-white/70"
+                  className="
+                    mt-2
+                    h-12
+                    bg-white/5
+                    border-white/10
+                    text-white
+                    placeholder:text-gray-500
+                    rounded-xl
+                    focus:ring-2
+                    focus:ring-purple-500
+                  "
                   {...register("password", {
                     required: "Password is required",
                   })}
                 />
 
-                {
-                  errors.password && (
-                    <p className="text-red-500 text-sm mt-2">
-                      {errors.password.message}
-                    </p>
-                  )
-                }
+                {errors.password && (
+                  <p className="text-red-400 text-sm mt-2">
+                    {errors.password.message}
+                  </p>
+                )}
 
               </div>
 
-              {/* Button */}
-
               <Button
                 type="submit"
-                className="w-full h-12 rounded-xl text-base font-semibold bg-black text-white hover:scale-[1.02] transition duration-300"
+                className="
+                  w-full
+                  h-12
+                  rounded-xl
+                  font-semibold
+                  bg-gradient-to-r
+                  from-purple-600
+                  via-pink-500
+                  to-blue-500
+                  hover:scale-[1.02]
+                  transition-all
+                  duration-300
+                  shadow-lg
+                  shadow-purple-500/30
+                "
               >
                 Sign In
               </Button>
 
             </form>
 
-           
-            <p className="text-center text-gray-500 mt-8">
+            <p className="text-center text-gray-400 mt-8">
 
-              Don&apos;t have an account?{" "}
+              Don't have an account?{" "}
 
               <Link
                 to="/signup"
-                className="font-semibold text-black hover:underline"
+                className="
+                  text-purple-400
+                  font-semibold
+                  hover:text-purple-300
+                "
               >
                 Sign Up
               </Link>
@@ -222,6 +278,7 @@ function Login() {
           </div>
 
         </motion.div>
+
       </Container>
 
     </div>

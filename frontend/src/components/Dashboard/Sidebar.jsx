@@ -1,41 +1,47 @@
 import {
   Home,
-  BookOpen,
   Folder,
   History,
   User,
   Settings,
+  NotebookPen,
 } from "lucide-react";
+import { NavLink } from "react-router-dom";
 
 function Sidebar() {
 
   const menuItems = [
-    {
-      title: "Dashboard",
-      icon: Home,
-    },
-    {
-      title: "Learn",
-      icon: BookOpen,
-    },
-    {
-      title: "Collections",
-      icon: Folder,
-    },
-    {
-      title: "History",
-      icon: History,
-    },
-    {
-      title: "Profile",
-      icon: User,
-    },
-    {
-      title: "Settings",
-      icon: Settings,
-    },
-  ];
-
+  {
+    title: "Dashboard",
+    icon: Home,
+    path: "/dashboard",
+  },
+  {
+    title: "My Notes",
+    icon: NotebookPen,
+    path: "/my-notes",
+  },
+  {
+    title: "Collections",
+    icon: Folder,
+    path: "/collections",
+  },
+  {
+    title: "History",
+    icon: History,
+    path: "/history",
+  },
+  {
+    title: "Profile",
+    icon: User,
+    path: "/profile",
+  },
+  {
+    title: "Settings",
+    icon: Settings,
+    path: "/settings",
+  },
+];
   return (
 
     <div className="w-[260px] min-h-screen p-5">
@@ -57,47 +63,33 @@ function Sidebar() {
         {/* Menu */}
 
         <div className="space-y-2">
+          {menuItems.map((item, index) => {
+  const Icon = item.icon;
 
-          {
-            menuItems.map((item, index) => {
+      return (
+    <NavLink
+      key={index}
+      to={item.path}
+      className={({ isActive }) =>
+        `
+        w-full flex items-center gap-3 px-4 py-3 rounded-2xl
+        transition-all duration-300 group
+        ${
+          isActive
+            ? "bg-white shadow-md text-purple-600"
+            : "text-gray-700 hover:bg-white hover:shadow-md"
+        }
+        `
+      }
+    >
+      <Icon size={20} className="group-hover:scale-110 transition" />
 
-              const Icon = item.icon;
+      <span className="font-medium">{item.title}</span>
+    </NavLink>
+  );
+})}
 
-              return (
 
-                <button
-                  key={index}
-                  className="
-                    w-full
-                    flex
-                    items-center
-                    gap-3
-                    px-4
-                    py-3
-                    rounded-2xl
-                    text-gray-700
-                    hover:bg-white
-                    hover:shadow-md
-                    transition-all
-                    duration-300
-                    group
-                  "
-                >
-
-                  <Icon
-                    size={20}
-                    className="group-hover:scale-110 transition"
-                  />
-
-                  <span className="font-medium">
-                    {item.title}
-                  </span>
-
-                </button>
-
-              );
-            })
-          }
 
         </div>
 
