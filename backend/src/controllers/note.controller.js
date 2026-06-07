@@ -44,4 +44,44 @@ const getNotes=asyncHandler(async(req,res)=>{
      new ApiResponse(200, notes, "Notes fetched successfully")
     );
 })
-export { createNote, getNotes }
+
+
+// delete  notes
+
+const deleteNote = asyncHandler(async (req, res) => {
+    const { noteId } = req.params;
+
+    await Note.findOneAndDelete({
+        _id: noteId,
+        user: req.user._id,
+    });
+
+    return res.status(200).json(
+        new ApiResponse(200, {}, "Note deleted")
+    );
+});
+
+//edit notes
+const updateNote = asyncHandler(async (req, res) => {
+    const { noteId } = req.params;
+    const { content } = req.body;
+
+    const note = await Note.findOneAndUpdate(
+        {
+            _id: noteId,
+            user: req.user._id,
+        },
+        {
+            content,
+        },
+        {
+            new: true,
+        }
+    );
+
+    return res.status(200).json(
+        new ApiResponse(200, note, "Note updated")
+    );
+});
+
+export { createNote, getNotes,deleteNote,updateNote }
