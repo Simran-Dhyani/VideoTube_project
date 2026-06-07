@@ -2,6 +2,7 @@ import { Router } from "express"
 import { logoutUser, registerUser,loginUser, refreshAccessToken, changePassword, getCurrentUser, updateAccountDetails, updateAvatar, updateCoverImage, getUserChannelProfile, getWatchHistory } from "../controllers/user.controller.js"
 import { upload } from "../middlewares/multer.middleware.js"
 import { verifyJWT } from "../middlewares/auth.middleware.js"
+import myNotes from "../controllers/myNotes.controller.js"
 
 const router = Router()
 router.route("/register").post(
@@ -26,4 +27,5 @@ router.route("/avatar").patch(verifyJWT,upload.single("avatar"),updateAvatar)
 router.route("/cover-image").patch(verifyJWT,upload.single("coverImage"),updateCoverImage)
 router.route("/c/:username").get(verifyJWT,getUserChannelProfile)
 router.route("/history").get(verifyJWT,getWatchHistory)
+router.route("/myNotes").get(verifyJWT,myNotes)
 export default router
