@@ -16,7 +16,12 @@ const noteSchema=new Schema({
         required:true
 
 
-    }
+    },
+     videoTitle:{
+            type:String,
+            required:true
+     },
+    
 
 },{timestamps:true})
 export const Note=mongoose.model("note",noteSchema)

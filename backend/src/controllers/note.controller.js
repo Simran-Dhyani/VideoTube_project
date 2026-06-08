@@ -10,17 +10,18 @@ const createNote=asyncHandler(async(req,res)=>{
 //get user id from req.user
 //save notes in mongoDB
 //return res
-
-const {videoId,content}=req.body
-if(!videoId || !content){
-    throw new ApiError(400,"videoId or content is missing")
+ console.log("BODY:", req.body);
+const {videoId,content,videoTitle}=req.body
+if(!videoId || !content || !videoTitle){
+    throw new ApiError(400,"videoId , content or title is missing")
 }
 const currentUser=req.user?._id
 
 const notes=await Note.create({
     user:currentUser,
     videoId,
-    content
+    content,
+    videoTitle
 })
 
 if(!notes){
@@ -38,7 +39,8 @@ const getNotes=asyncHandler(async(req,res)=>{
     const {videoId}=req.params;
     const notes=await Note.find({
         user:req.user?._id,
-        videoId
+        videoId,
+    
     })
     return res.status(200).json(
      new ApiResponse(200, notes, "Notes fetched successfully")
