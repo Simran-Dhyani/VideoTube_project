@@ -11,9 +11,9 @@ function Dashboard() {
   const [videos,setVideos]=useState([])
   const [searchQuery,setSearchQuery]=useState("")
   const getVideos=async()=>{
-    const query=searchQuery || "web development"
-    const data=await fetchVideos(query)
-    setVideos(data)
+  const query=searchQuery || "web development"
+  const data=await fetchVideos(query)
+  setVideos(data)
   }
 
   useEffect(()=>{

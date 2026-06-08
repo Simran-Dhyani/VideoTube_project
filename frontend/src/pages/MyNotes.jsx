@@ -125,6 +125,9 @@ return ( <div className="min-h-screen bg-gradient-to-br from-slate-50 via-purple
 
               <Link
                 to={`/watch/${video._id}`}
+                state={{
+                videoTitle: video.videoTitle,
+                }}
                 className="
                 flex
                 justify-center

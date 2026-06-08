@@ -124,7 +124,16 @@ function SignUp() {
 
             <Input
               placeholder="Full Name"
-              className="h-12 rounded-xl bg-white/10 border-white/20 text-white placeholder:text-gray-400"
+              className="
+              h-12 rounded-xl bg-white/10 border-white/20 text-white placeholder:text-gray-400
+               focus:ring-2
+                    focus:ring-purple-500
+                    hover:[1.02]
+                     transition-all
+                     duration-300
+                    shadow-lg
+                    shadow-purple-500/30
+              "
               {...register("fullname", {
                 required: "Full name is required",
               })}
@@ -132,7 +141,16 @@ function SignUp() {
 
             <Input
               placeholder="Username"
-              className="h-12 rounded-xl bg-white/10 border-white/20 text-white placeholder:text-gray-400"
+              className="
+              h-12 rounded-xl bg-white/10 border-white/20 text-white placeholder:text-gray-400
+               focus:ring-2
+                    focus:ring-purple-500
+                    hover:[1.02]
+                     transition-all
+                     duration-300
+                    shadow-lg
+                    shadow-purple-500/30
+              "
               {...register("username", {
                 required: "Username is required",
               })}
@@ -141,7 +159,15 @@ function SignUp() {
             <Input
               type="email"
               placeholder="Email Address"
-              className="h-12 rounded-xl bg-white/10 border-white/20 text-white placeholder:text-gray-400"
+              className="
+              h-12 rounded-xl bg-white/10 border-white/20 text-white placeholder:text-gray-400
+               focus:ring-2
+                    focus:ring-purple-500
+                    hover:[1.02]
+                     transition-all
+                     duration-300
+                    shadow-lg
+                    shadow-purple-500/30"
               {...register("email", {
                 required: "Email is required",
               })}
@@ -150,7 +176,15 @@ function SignUp() {
             <Input
               type="password"
               placeholder="Password"
-              className="h-12 rounded-xl bg-white/10 border-white/20 text-white placeholder:text-gray-400"
+              className="
+              h-12 rounded-xl bg-white/10 border-white/20 text-white placeholder:text-gray-400
+               focus:ring-2
+                    focus:ring-purple-500
+                    hover:[1.02]
+                     transition-all
+                     duration-300
+                    shadow-lg
+                    shadow-purple-500/30"
               {...register("password", {
                 required: "Password is required",
               })}
@@ -164,7 +198,16 @@ function SignUp() {
               <Input
                 type="file"
                 accept="image/*"
-                className="mt-2 bg-white/10 border-white/20 text-gray-300"
+                className="
+                mt-2 bg-white/10 border-white/20 text-gray-300
+                 focus:ring-2
+                    focus:ring-purple-500
+                    hover:[1.02]
+                     transition-all
+                     duration-300
+                    shadow-lg
+                    shadow-purple-500/30
+                "
                 {...register("avatar", {
                   required: "Avatar is required",
                 })}

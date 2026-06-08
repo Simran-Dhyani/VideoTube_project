@@ -6,6 +6,9 @@ function VideoCard({ video }) {
   return (
     <Link 
    to={`/watch/${video.id.videoId}`}
+    state={{
+    videoTitle: video.snippet.title,
+    }}
      >
 
     <motion.div

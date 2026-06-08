@@ -1,11 +1,13 @@
 import axios from "axios";
 const API=import.meta.env.VITE_API_URL;
-export const saveNotes=async(videoId,content)=>{
+export const saveNotes=async({videoId,content,videoTitle,})=>{
+    console.log("TITLE =", videoTitle);
     const response=await axios.post(
          `${API}/api/v1/notes`,
          {
             videoId,
             content,
+            videoTitle
          },
          {
             withCredentials:true,

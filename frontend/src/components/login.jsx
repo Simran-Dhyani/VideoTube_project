@@ -121,9 +121,9 @@ function Login() {
                   text-5xl
                   font-bold
                   bg-gradient-to-r
-                  from-purple-400
-                  via-pink-400
-                  to-blue-400
+                  from-purple-800
+                  to-pink-600
+                  
                   bg-clip-text
                   text-transparent
                 "
@@ -182,6 +182,11 @@ function Login() {
                     rounded-xl
                     focus:ring-2
                     focus:ring-purple-500
+                    hover:[1.02]
+                  transition-all
+                  duration-300
+                  shadow-lg
+                  shadow-purple-500/30
                   "
                   {...register("email", {
                     required: "Email is required",
@@ -221,6 +226,11 @@ function Login() {
                     rounded-xl
                     focus:ring-2
                     focus:ring-purple-500
+                    hover:[1.02]
+                     transition-all
+                     duration-300
+                    shadow-lg
+                    shadow-purple-500/30
                   "
                   {...register("password", {
                     required: "Password is required",
@@ -243,9 +253,10 @@ function Login() {
                   rounded-xl
                   font-semibold
                   bg-gradient-to-r
-                  from-purple-600
-                  via-pink-500
-                  to-blue-500
+                  from-purple-800
+                  to-pink-600
+                  border-black
+                  
                   hover:scale-[1.02]
                   transition-all
                   duration-300
